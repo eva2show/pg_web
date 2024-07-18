@@ -2,58 +2,71 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+	import Auto from "../lib/coms/autoSpin.svelte";
+	import Balance from '$lib/coms/balance.svelte';
+
+	let win_visible = false;
+	const showWin = () => {
+		win_visible = !win_visible;
+	}
+
+	export function closeWin(){
+		win_visible = false;
+	}
+
+	
 </script>
 
 <svelte:head>
-	<title>寻找黄金城</title>
+	<title>寻宝黄金城</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<!-- <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<section>
+	<div class="moneyline">
+		<img src="./icons/balance.png" alt="" class="balance" on:click={showWin}>
+	</div>
+	<div class="spinline">
+		<div class="spin">
+			<img src="./icons/auto.png" alt="" class="auto"  on:click={showWin}>
+		</div>
+	</div>
 
-		to your new<br />SvelteKit app
-	</h1>
+	{#if win_visible}
+	     <Auto closeWin={closeWin}/>
+    {/if}
+	{#if win_visible}
+	     <Balance closeWin={closeWin}/>
+    {/if}
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
 
-	<Counter />
-</section> -->
+
+</section>
 
 <style>
 	section {
-		display: flex;
+		/* display: flex; */
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
 	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
+	.spinline{
 		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+		bottom: 16.2%;
+		left: 83.5%;
 	}
+	.auto{
+		width: 38.6px
+	}
+	.balance{
+		position: absolute;
+		bottom: 25.1%;
+		left: 1.5%;
+		width: 20px;
+	}
+
+
+
 </style>
