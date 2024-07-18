@@ -6,14 +6,23 @@
 	import Auto from "../lib/coms/autoSpin.svelte";
 	import Balance from '$lib/coms/balance.svelte';
 
-	let win_visible = false;
-	const showWin = () => {
-		win_visible = !win_visible;
+	let auto_visible = false;
+	const showAutoWin = () => {
+		auto_visible = !auto_visible;
+	}
+	export function closeAutoWin(){
+		auto_visible = false;
 	}
 
-	export function closeWin(){
-		win_visible = false;
+	let balance_visible = false;
+	const showBalanceWin = () => {
+		balance_visible = !balance_visible;
 	}
+	export function closeBalanceWin(){
+		balance_visible = false;
+	}
+
+	
 
 	
 </script>
@@ -25,19 +34,19 @@
 
 <section>
 	<div class="moneyline">
-		<img src="./icons/balance.png" alt="" class="balance" on:click={showWin}>
+		<img src="./icons/balance.png" alt="" class="balance" on:click={showBalanceWin}>
 	</div>
 	<div class="spinline">
 		<div class="spin">
-			<img src="./icons/auto.png" alt="" class="auto"  on:click={showWin}>
+			<img src="./icons/auto.png" alt="" class="auto"  on:click={showAutoWin}>
 		</div>
 	</div>
 
-	{#if win_visible}
-	     <Auto closeWin={closeWin}/>
+	{#if auto_visible}
+	     <Auto closeWin={closeAutoWin}/>
     {/if}
-	{#if win_visible}
-	     <Balance closeWin={closeWin}/>
+	{#if balance_visible}
+	     <Balance closeWin={closeBalanceWin}/>
     {/if}
 
 
