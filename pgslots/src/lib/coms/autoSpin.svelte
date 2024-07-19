@@ -10,8 +10,11 @@
     transition:fly={{y: "50vh", opacity: 0.5, duration: 500}}
     class="min"
     >
-  <span class="autospin">自动旋转</span>
-  <img src="./icons/ic_close.png" alt="" class="ic_close" on:click={closeWin}>
+    <div>
+      <p class="autospin">自动旋转</p>
+      <img src="./icons/ic_close.png" alt="" class="ic_close" on:click={closeWin}>
+    </div>
+  
 </div>
 
 
@@ -28,10 +31,13 @@
    }
    .ic_close{
     position: absolute;
+    top:15px;
     right: 5px;
-    height: 50px;
+    height: 45px;
    }
    .autospin{
-    
+    position: absolute;
+    left: 40%;
+    font-size: 23px;
    }
 </style>
