@@ -18,7 +18,7 @@
 <style>
    .min{
 	width: 100%;
-	height: 40vh;
+	height: 36vh;
 	position: absolute;
 	bottom: 0;
     left: 0;

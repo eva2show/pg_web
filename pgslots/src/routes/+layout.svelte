@@ -16,7 +16,7 @@
 
 <style>
 	.app {
-		background-image: url("../lib/images/bg.png");
+		background-image: url("../lib/images/bg.jpg");
 		background-position: center,center;
 		background-size: contain;
 		display: flex;

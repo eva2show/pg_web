@@ -5,6 +5,8 @@
 
 	import Auto from "../lib/coms/autoSpin.svelte";
 	import Balance from '$lib/coms/balance.svelte';
+	import Bet from '$lib/coms/bet.svelte';
+	import History from '$lib/coms/history.svelte';
 
 	let auto_visible = false;
 	const showAutoWin = () => {
@@ -14,6 +16,7 @@
 		auto_visible = false;
 	}
 
+
 	let balance_visible = false;
 	const showBalanceWin = () => {
 		balance_visible = !balance_visible;
@@ -22,7 +25,21 @@
 		balance_visible = false;
 	}
 
-	
+	let bet_visible =false;
+	const showBetWin = () => {
+		bet_visible = !bet_visible;
+	}
+	export function closeBetWin(){
+		bet_visible = false;
+	}
+
+	let history_visible =false;
+	const showHistoryWin = () => {
+		history_visible = !history_visible;
+	}
+	export function closeHistoryWin(){
+		history_visible = false;
+	}
 
 	
 </script>
@@ -35,6 +52,8 @@
 <section>
 	<div class="moneyline">
 		<img src="./icons/balance.png" alt="" class="balance" on:click={showBalanceWin}>
+		<img src="./icons/bet.png" alt="" class="bet"  on:click={showBetWin}>
+		<img src="./icons/history.png" alt="" class="history"on:click={showHistoryWin}>
 	</div>
 	<div class="spinline">
 		<div class="spin">
@@ -43,13 +62,17 @@
 	</div>
 
 	{#if auto_visible}
-	     <Auto closeWin={closeAutoWin}/>
+	    <Auto closeWin={closeAutoWin}/>
     {/if}
 	{#if balance_visible}
-	     <Balance closeWin={closeBalanceWin}/>
+	    <Balance closeWin={closeBalanceWin}/>
     {/if}
-
-
+	{#if bet_visible}
+	    <Bet closeWin={closeBetWin}/>
+    {/if}
+	{#if history_visible}
+	    <History closeWin={closeHistoryWin}/>
+    {/if}
 
 </section>
 
@@ -75,7 +98,16 @@
 		left: 1.5%;
 		width: 20px;
 	}
-
-
-
+	.bet{
+		position: absolute;
+		bottom: 25.1%;
+		width: 17px;
+		left: 35.6%;
+	}
+	.history{
+		position: absolute;
+		bottom: 25.1%;
+		width: 24px;
+		left: 67.5%;
+	}
 </style>
